@@ -28,23 +28,18 @@
 (setq dumb-jump-prefer-searcher 'ag)
 (require 'manage-minor-mode)
 ;; ------------- Code Intel / Language Server Protocol ------------
-(require 'lsp-mode)
-(lsp-define-stdio-client
- lsp-javascript-typescript "javascript"
- (lsp-make-traverser #'(lambda (dir)
-						 (directory-files
-						  dir
-						  nil
-						  "package.json")))
-   '("/usr/local/bin/javascript-typescript-langserver"))
+(load! +lsp)
+
 ;; -------------- Company Stuff ----------------
-(require 'company-lsp)
 (after! company
-(push 'company-lsp company-backends)
-  )
+  (setq company-idle-delay 0.2)
+  (setq company-echo-delay 0.0)
+  (setq company-minimum-prefix-length 1)
+  (setq company-tooltip-flip-when-above t)
+  (setq company-dabbrev-downcase nil))
 ;; (def-package! company-box
 ;;   :hook (company-mode . company-box-mode))
-(setq company-box-icons-unknown
+(setq company-box-icons
       '((1 . fa_text_height) ;; Text
         (2 . (fa_tags :face font-lock-function-name-face)) ;; Method
         (3 . (fa_tag :face font-lock-function-name-face)) ;; Function
@@ -75,7 +70,7 @@
 ;; (require 'wakatime-mode)
 ;; (custom-set-variables '(wakatime-api-key (getenv "WAKATIME")))
 ;; windows check
-;; (setq wakatime-cli-path (eshell-command-result "which wakatime"))
+;; (setq wakatime-cli-path (shell-command-to-string "which wakatime"))
 ;; (setq wakatime-cli-path "/opt/conda/bin/wakatime")
    ;; (setq wakatime-cli-path "/usr/local/bin/wakatime")
 ;; (global-wakatime-mode)
@@ -129,8 +124,6 @@ If it's found, then add it to the `exec-path'."
 (add-to-list 'default-frame-alist '(font . "PragmataPro"))
 (set-face-attribute 'default t :font "PragmataPro")
 (global-prettify-symbols-mode +1)
-;; (require 'challenger-deep-theme)
-;; (load-theme 'challenger-deep t)
 ;; ; --------- ModeLine ------------------;
 
 (def-package! spaceline

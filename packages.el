@@ -8,6 +8,8 @@
 (package! spaceline)
 (package! company-box)
 (package! lsp-mode)
+(package! lsp-ui)
+(package! lsp-javascript-typescript)
 (package! company-lsp)
 (package! challenger-deep-theme)
 (package! manage-minor-mode)
