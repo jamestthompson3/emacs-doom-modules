@@ -7,6 +7,8 @@
 (package! spaceline-all-the-icons)
 (package! spaceline)
 (package! company-box)
+(package! lsp-mode)
+(package! company-lsp)
 (package! challenger-deep-theme)
 (package! manage-minor-mode)
 (package! json-mode)

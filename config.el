@@ -27,23 +27,61 @@
 (require 'dumb-jump)
 (setq dumb-jump-prefer-searcher 'ag)
 (require 'manage-minor-mode)
+;; ------------- Code Intel / Language Server Protocol ------------
+(require 'lsp-mode)
+(lsp-define-stdio-client
+ lsp-javascript-typescript
+ "javascript"
+ (lambda() default-directory)
+   '("/usr/local/bin/javascript-typescript-langserver"))
+;; -------------- Company Stuff ----------------
+(require 'company-lsp)
+(push 'company-lsp company-backends)
+;; (def-package! company-box
+;;   :hook (company-mode . company-box-mode))
+(setq company-box-icons-unknown
+      '((1 . fa_text_height) ;; Text
+        (2 . (fa_tags :face font-lock-function-name-face)) ;; Method
+        (3 . (fa_tag :face font-lock-function-name-face)) ;; Function
+        (4 . (fa_tag :face font-lock-function-name-face)) ;; Constructor
+        (5 . (fa_cog :foreground "#FF9800")) ;; Field
+        (6 . (fa_cog :foreground "#FF9800")) ;; Variable
+        (7 . (fa_cube :foreground "#7C4DFF")) ;; Class
+        (8 . (fa_cube :foreground "#7C4DFF")) ;; Interface
+        (9 . (fa_cube :foreground "#7C4DFF")) ;; Module
+        (10 . (fa_cog :foreground "#FF9800")) ;; Property
+        (11 . md_settings_system_daydream) ;; Unit
+        (12 . (fa_cog :foreground "#FF9800")) ;; Value
+        (13 . (md_storage :face font-lock-type-face)) ;; Enum
+        (14 . (md_closed_caption :foreground "#009688")) ;; Keyword
+        (15 . md_closed_caption) ;; Snippet
+        (16 . (md_color_lens :face font-lock-doc-face)) ;; Color
+        (17 . fa_file_text_o) ;; File
+        (18 . md_refresh) ;; Reference
+        (19 . fa_folder_open) ;; Folder
+        (20 . (md_closed_caption :foreground "#009688")) ;; EnumMember
+        (21 . (fa_square :face font-lock-constant-face)) ;; Constant
+        (22 . (fa_cube :face font-lock-type-face)) ;; Struct
+        (23 . fa_calendar) ;; Event
+        (24 . fa_square_o) ;; Operator
+        (25 . fa_arrows)) ;; TypeParameter
+      )
 ;; ------------- Wakatime Mode -----------------
-(require 'wakatime-mode)
-(setq wakatime-api-key (getenv "WAKATIME"))
+;; (require 'wakatime-mode)
+;; (custom-set-variables '(wakatime-api-key (getenv "WAKATIME")))
 ;; windows check
 ;; (setq wakatime-cli-path (eshell-command-result "which wakatime"))
 ;; (setq wakatime-cli-path "/opt/conda/bin/wakatime")
-   (setq wakatime-cli-path "/usr/local/bin/wakatime")
-(global-wakatime-mode)
+   ;; (setq wakatime-cli-path "/usr/local/bin/wakatime")
+;; (global-wakatime-mode)
 
 ;; --------- End Wakatime Mode ---------------------
 
 
-;;; -------------- JS MODE CONFIG --------------
-;; ----------- RJSX Mode ----------------
 ;; --------- Auto refresh buffers ----------------
-(require 'ag)
 (global-auto-revert-mode t)
+;; ---------- Silver Searcher ------------------
+(require 'ag)
 (setq ag-highlight-search t)
 (setq ag-reuse-window t)
 
@@ -103,21 +141,9 @@ If it's found, then add it to the `exec-path'."
 
 
   )
+;; Make Spaceline look nice
 (require 'challenger-deep-theme)
 (load-theme 'challenger-deep t)
-;; ;------------{NO Scrollbar}------------;
-
-;;------------- Line Numbers ----------------
-
-
-;; Show all line numbering by default (you can turn this off if you would like)
-;;(global-line-number-mode 1)
-;; (global-linum-mode 1)
-
-;; Adjust Spacing
-;; (setq linum-format "%d  ")
-
-;; -------- End Line Numbers ------------
 
 ;; ------------- Random Modes ------------------
 (add-hook! 'before-save-hook 'delete-trailing-whitespace)
