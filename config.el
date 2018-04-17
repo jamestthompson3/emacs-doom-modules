@@ -1,6 +1,9 @@
 ;;; privateu/tt/config.el -*- lexical-binding: t; -*-
 (load! +bindings)
-
+;; ------------- Code Intel / Language Server Protocol ------------
+;; (load! +lsp)
+;; --------------------- JavaScript ----------------------------
+(load! +javascript)
 ;; -------- Org Sync -------------------
 ;; (mapc 'load
 ;;       '("org-sync-bb" "org-sync-github" "org-sync-redmine"))
@@ -27,14 +30,13 @@
 (require 'dumb-jump)
 (setq dumb-jump-prefer-searcher 'ag)
 (require 'manage-minor-mode)
-;; ------------- Code Intel / Language Server Protocol ------------
-(load! +lsp)
+
 
 ;; -------------- Company Stuff ----------------
 (after! company
   (setq company-idle-delay 0.2)
   (setq company-echo-delay 0.0)
-  (setq company-minimum-prefix-length 1)
+  (setq company-minimum-prefix-length 3)
   (setq company-tooltip-flip-when-above t)
   (setq company-dabbrev-downcase nil))
 ;; (def-package! company-box
@@ -85,36 +87,6 @@
 (setq ag-highlight-search t)
 (setq ag-reuse-window t)
 
-(defun add-node-modules-path ()
-  "Search the current buffer's parent directories for `node_modules/.bin`.
-If it's found, then add it to the `exec-path'."
-  (interactive)
-  (let* ((root (locate-dominating-file
-                (or (buffer-file-name) default-directory)
-                "node_modules"))
-         (path (and root
-                    (expand-file-name "node_modules/.bin/" root))))
-    (if root
-        (progn
-          (make-local-variable 'exec-path)
-          (add-to-list 'exec-path path)
-          (when add-node-modules-path-debug
-            (message (concat "added " path  " to exec-path"))))
-      (when add-node-modules-path-debug
-        (message (concat "node_modules not found in " root))))))
-;; (#'add-node-modules-path)
-;; -------------- End Flycheck ----------------
- (setq js2-strict-missing-semi-warning nil)
- (setq js2-missing-semi-one-line-override nil)
-
-;; (add-hook! 'rjsx-mode-hook #'( web-mode flow-minor-enable-automatically ))
-(setq prettier-js-args '(
-  "--trailing-comma" "none"
-  "--parser" "flow"
-  "--semi" "false"
-  "single-quote" "true"
-  ))
-(package! tern :disable)
 
 ;;  --------------- End JS MODE CONFIG --------------------
 

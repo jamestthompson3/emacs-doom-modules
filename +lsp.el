@@ -1,6 +1,5 @@
 ;;; -*- lexical-binding: t; -*-
 
-(require 'lsp-mode)
 ;; (lsp-define-stdio-client
 ;;  lsp-javascript-typescript "javascript"
 ;;  (lsp-make-traverser #'(lambda (dir)
@@ -10,6 +9,7 @@
 ;; 						  "package.json")))
 ;;    '((shell-command-to-string "which javascript-typescript-langserver")))
 
+(require 'lsp-mode)
 (def-package! lsp-ui
   :after lsp-mode
   :config
