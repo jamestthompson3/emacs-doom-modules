@@ -30,13 +30,18 @@
 ;; ------------- Code Intel / Language Server Protocol ------------
 (require 'lsp-mode)
 (lsp-define-stdio-client
- lsp-javascript-typescript
- "javascript"
- (lambda() default-directory)
+ lsp-javascript-typescript "javascript"
+ (lsp-make-traverser #'(lambda (dir)
+						 (directory-files
+						  dir
+						  nil
+						  "package.json")))
    '("/usr/local/bin/javascript-typescript-langserver"))
 ;; -------------- Company Stuff ----------------
 (require 'company-lsp)
+(after! company
 (push 'company-lsp company-backends)
+  )
 ;; (def-package! company-box
 ;;   :hook (company-mode . company-box-mode))
 (setq company-box-icons-unknown
