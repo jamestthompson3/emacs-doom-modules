@@ -1,6 +1,7 @@
 ;;; privateu/tt/config.el -*- lexical-binding: t; -*-
 (load! +bindings)
 ;; ------------- Code Intel / Language Server Protocol ------------
+;; work to configure lsp with company-tide
 ;; (load! +lsp)
 ;; --------------------- JavaScript ----------------------------
 (load! +javascript)
@@ -34,40 +35,27 @@
 
 ;; -------------- Company Stuff ----------------
 (after! company
-  (setq company-idle-delay 0.2)
-  (setq company-echo-delay 0.0)
-  (setq company-minimum-prefix-length 3)
-  (setq company-tooltip-flip-when-above t)
-  (setq company-dabbrev-downcase nil))
+  (setq company-idle-delay 0.2
+        company-echo-delay 0.0
+        company-minimum-prefix-length 2
+        company-tooltip-flip-when-above t
+        company-dabbrev-downcase nil))
+
 ;; (def-package! company-box
-;;   :hook (company-mode . company-box-mode))
-(setq company-box-icons
-      '((1 . fa_text_height) ;; Text
-        (2 . (fa_tags :face font-lock-function-name-face)) ;; Method
-        (3 . (fa_tag :face font-lock-function-name-face)) ;; Function
-        (4 . (fa_tag :face font-lock-function-name-face)) ;; Constructor
-        (5 . (fa_cog :foreground "#FF9800")) ;; Field
-        (6 . (fa_cog :foreground "#FF9800")) ;; Variable
-        (7 . (fa_cube :foreground "#7C4DFF")) ;; Class
-        (8 . (fa_cube :foreground "#7C4DFF")) ;; Interface
-        (9 . (fa_cube :foreground "#7C4DFF")) ;; Module
-        (10 . (fa_cog :foreground "#FF9800")) ;; Property
-        (11 . md_settings_system_daydream) ;; Unit
-        (12 . (fa_cog :foreground "#FF9800")) ;; Value
-        (13 . (md_storage :face font-lock-type-face)) ;; Enum
-        (14 . (md_closed_caption :foreground "#009688")) ;; Keyword
-        (15 . md_closed_caption) ;; Snippet
-        (16 . (md_color_lens :face font-lock-doc-face)) ;; Color
-        (17 . fa_file_text_o) ;; File
-        (18 . md_refresh) ;; Reference
-        (19 . fa_folder_open) ;; Folder
-        (20 . (md_closed_caption :foreground "#009688")) ;; EnumMember
-        (21 . (fa_square :face font-lock-constant-face)) ;; Constant
-        (22 . (fa_cube :face font-lock-type-face)) ;; Struct
-        (23 . fa_calendar) ;; Event
-        (24 . fa_square_o) ;; Operator
-        (25 . fa_arrows)) ;; TypeParameter
-      )
+;;   :when EMACS26+
+;;   :hook (company-mode . company-box-mode)
+;;   :config
+;;   (setq company-frontends nil
+;;         company-box-icons-elisp
+;;         (list (concat (all-the-icons-material "functions") " ")
+;;               (concat (all-the-icons-material "check_circle") " ")
+;;               (concat (all-the-icons-material "stars") " ")
+;;               (concat (all-the-icons-material "format_paint") " "))
+;;         company-box-icons-unknown (concat (all-the-icons-material "find_in_page") " ")
+;;         company-box-backends-colors nil
+;;         company-box-icons-yasnippet (concat (all-the-icons-material "short_text") " ")))
+
+(setq doom-theme 'doom-vibrant)
 ;; ------------- Wakatime Mode -----------------
 ;; (require 'wakatime-mode)
 ;; (custom-set-variables '(wakatime-api-key (getenv "WAKATIME")))
