@@ -22,12 +22,16 @@
  (push 'company-lsp company-backends)
  (setq company-lsp-async t
               company-lsp-cache-candidates nil))
-
-(def-package! lsp-javascript-typescript
+(def-package! lsp-python
   :after lsp-mode
   :config
-  (add-hook! js2-mode #'lsp-javascript-typescript-enable)
-  (add-hook! typescript-mode #'lsp-javascript-typescript-enable)
-  (add-hook! rjsx-mode #'lsp-javascript-typescript-enable)
-  (add-hook! web-mode #'lsp-javascript-typescript-enable)
-)
+  (add-hook! python-mode-hook #'lsp-python-enable))
+
+;; (def-package! lsp-javascript-typescript
+;;   :after lsp-mode
+;;   :config
+;;   (add-hook! js2-mode #'lsp-javascript-typescript-enable)
+;;   (add-hook! typescript-mode #'lsp-javascript-typescript-enable)
+;;   (add-hook! rjsx-mode #'lsp-javascript-typescript-enable)
+;;   (add-hook! web-mode #'lsp-javascript-typescript-enable)
+;; )

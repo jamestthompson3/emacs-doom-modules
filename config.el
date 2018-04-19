@@ -2,7 +2,7 @@
 (load! +bindings)
 ;; ------------- Code Intel / Language Server Protocol ------------
 ;; work to configure lsp with company-tide
-;; (load! +lsp)
+(load! +lsp)
 ;; --------------------- JavaScript ----------------------------
 (load! +javascript)
 ;; -------- Org Sync -------------------

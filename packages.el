@@ -10,6 +10,7 @@
 (package! lsp-mode)
 (package! lsp-ui)
 (package! lsp-javascript-typescript)
+(package! lsp-python)
 (package! tide)
 (package! company-childframe :disable t)
 (package! posframe :disable t)
