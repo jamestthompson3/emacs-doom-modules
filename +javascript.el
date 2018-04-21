@@ -5,6 +5,11 @@
  (setq js2-strict-missing-semi-warning nil)
  (setq js2-missing-semi-one-line-override nil)
 
+(after! tide
+  (setq tide-completion-detailed t
+        tide-always-show-documentation t)
+  )
+
 (setq prettier-js-args '(
   "--trailing-comma" "none"
   "--parser" "flow"
