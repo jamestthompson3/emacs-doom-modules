@@ -1,10 +1,14 @@
-;;; privateu/tt/config.el -*- lexical-binding: t; -*-
+;;; private/tt/config.el -*- lexical-binding: t; -*-
 (load! +bindings)
 ;; ------------- Code Intel / Language Server Protocol ------------
-;; work to configure lsp with company-tide
 (load! +lsp)
 ;; --------------------- JavaScript ----------------------------
 (load! +javascript)
+;; ------------ Set Namespace ----------------------
+(require 'challenger-deep-theme)
+(require 'dumb-jump)
+(require 'manage-minor-mode)
+(require 'ag)
 ;; -------- Org Sync -------------------
 ;; (mapc 'load
 ;;       '("org-sync-bb" "org-sync-github" "org-sync-redmine"))
@@ -25,14 +29,8 @@
               css-2-offset 2
               rust-indent-offset 2)
 
-;; ------- Delete selected text -----------------
-(delete-selection-mode 1)
-
-(require 'dumb-jump)
+;; -------  Dumb Jump -----------------
 (setq dumb-jump-prefer-searcher 'ag)
-(require 'manage-minor-mode)
-
-
 ;; -------------- Company Stuff ----------------
 (after! company
   (setq company-idle-delay 0.2
@@ -40,20 +38,6 @@
         company-minimum-prefix-length 2
         company-tooltip-flip-when-above t
         company-dabbrev-downcase nil))
-
-;; (def-package! company-box
-;;   :when EMACS26+
-;;   :hook (company-mode . company-box-mode)
-;;   :config
-;;   (setq company-frontends nil
-;;         company-box-icons-elisp
-;;         (list (concat (all-the-icons-material "functions") " ")
-;;               (concat (all-the-icons-material "check_circle") " ")
-;;               (concat (all-the-icons-material "stars") " ")
-;;               (concat (all-the-icons-material "format_paint") " "))
-;;         company-box-icons-unknown (concat (all-the-icons-material "find_in_page") " ")
-;;         company-box-backends-colors nil
-;;         company-box-icons-yasnippet (concat (all-the-icons-material "short_text") " ")))
 
 (setq doom-theme 'doom-vibrant)
 ;; ------------- Wakatime Mode -----------------
@@ -67,16 +51,9 @@
 
 ;; --------- End Wakatime Mode ---------------------
 
-
-;; --------- Auto refresh buffers ----------------
-(global-auto-revert-mode t)
 ;; ---------- Silver Searcher ------------------
-(require 'ag)
 (setq ag-highlight-search t)
 (setq ag-reuse-window t)
-
-
-;;  --------------- End JS MODE CONFIG --------------------
 
 ;--------------{Set Font}--------------;
 (setq casey-font "PragmataPro")
@@ -100,10 +77,9 @@
 
   )
 ;; Make Spaceline look nice
-(require 'challenger-deep-theme)
 (load-theme 'challenger-deep t)
-
-;; ------------- Random Modes ------------------
+;; ------------- Random Crap ------------------
 (add-hook! 'before-save-hook 'delete-trailing-whitespace)
-
+(global-auto-revert-mode t)
+(delete-selection-mode 1)
 ;;; .emacs ends here
