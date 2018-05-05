@@ -5,15 +5,16 @@
 ;; --------------------- JavaScript ----------------------------
 (load! +javascript)
 ;; ------------ Set Namespace ----------------------
-(require 'challenger-deep-theme)
+(require 'wakatime-mode)
 (require 'dumb-jump)
 (require 'manage-minor-mode)
 (require 'ag)
+(require 'challenger-deep-theme)
 ;; -------- Org Sync -------------------
 ;; (mapc 'load
 ;;       '("org-sync-bb" "org-sync-github" "org-sync-redmine"))
 
-(setq projectile-globally-ignored-directories '("node_modules" ".happypack" "flow-typed"))
+(setq projectile-globally-ignored-directories '("node_modules" ".happypack" "flow-typed" "build"))
 (setq grep-find-ignored-directories '("node_modules" ".happypack"))
 ;; set indentation
 (setq-default tab-width 2
@@ -39,16 +40,12 @@
         company-tooltip-flip-when-above t
         company-dabbrev-downcase nil))
 
-(setq doom-theme 'doom-vibrant)
-;; ------------- Wakatime Mode -----------------
-;; (require 'wakatime-mode)
-;; (custom-set-variables '(wakatime-api-key (getenv "WAKATIME")))
-;; windows check
-;; (setq wakatime-cli-path (shell-command-to-string "which wakatime"))
-;; (setq wakatime-cli-path "/opt/conda/bin/wakatime")
-   ;; (setq wakatime-cli-path "/usr/local/bin/wakatime")
-;; (global-wakatime-mode)
+(setq doom-theme 'doom-city-lights)
 
+;; ------------- Wakatime Mode -----------------
+(global-wakatime-mode)
+(setq wakatime-api-key (getenv "WAKATIME"))
+(setq wakatime-cli-path "/usr/local/bin/wakatime")
 ;; --------- End Wakatime Mode ---------------------
 
 ;; ---------- Silver Searcher ------------------
@@ -56,13 +53,12 @@
 (setq ag-reuse-window t)
 
 ;--------------{Set Font}--------------;
-(setq casey-font "PragmataPro")
 ;; Font cosmetic edits
-(add-to-list 'default-frame-alist '(font . "PragmataPro"))
-(set-face-attribute 'default t :font "PragmataPro")
+(setq doom-font (font-spec :family "AnonymousPro" :size 16))
+(setq doom-big-font (font-spec :family "PragmataPro" :size 24))
 (global-prettify-symbols-mode +1)
-;; ; --------- ModeLine ------------------;
 
+;; ; --------- ModeLine ------------------;
 (def-package! spaceline
   :config (setq spaceline-org-clock-p nil
                 spaceline-evil-p t)
@@ -76,8 +72,8 @@
 
 
   )
-;; Make Spaceline look nice
-(load-theme 'challenger-deep t)
+;; Make modeline nice
+(load-theme 'challenger-deep)
 ;; ------------- Random Crap ------------------
 (add-hook! 'before-save-hook 'delete-trailing-whitespace)
 (global-auto-revert-mode t)

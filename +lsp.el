@@ -1,15 +1,7 @@
 ;;; -*- lexical-binding: t; -*-
 
-;; (lsp-define-stdio-client
-;;  lsp-javascript-typescript "javascript"
-;;  (lsp-make-traverser #'(lambda (dir)
-;; 						 (directory-files
-;; 						  dir
-;; 						  nil
-;; 						  "package.json")))
-;;    '((shell-command-to-string "which javascript-typescript-langserver")))
-
 (require 'lsp-mode)
+
 (def-package! lsp-ui
   :after lsp-mode
   :config
@@ -25,7 +17,7 @@
 (def-package! lsp-python
   :after lsp-mode
   :config
-  (add-hook! python-mode-hook #'lsp-python-enable))
+  (add-hook! python-mode #'lsp-python-enable))
 
 ;; (def-package! lsp-javascript-typescript
 ;;   :after lsp-mode

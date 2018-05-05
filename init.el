@@ -20,7 +20,7 @@
        workspaces        ; tab emulation, persistence & separate workspaces
 
        :completion
-       (company  +childframe)          ; the ultimate code completion backend
+       (company +auto  +childframe)          ; the ultimate code completion backend
       ;helm              ; the *other* search engine for love and life
       ;ido               ; the other *other* search engine...
        ivy               ; a search engine for love and life
@@ -52,7 +52,7 @@
        ;; neotree           ; a project drawer, like NERDTree for vim
        ;; password-store    ; password manager for nerds
        pdf               ; pdf enhancements
-      ;rgb               ; creating color strings
+       rgb               ; creating color strings
        rotate-text       ; cycle region at point between text candidates
        term              ; terminals in Emacs
        ;; tmux              ; an API for interacting with tmux
