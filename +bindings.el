@@ -1,7 +1,7 @@
 ;;; private/tt/+bindings.el -*- lexical-binding: t; -*-
 
 
-(evil-define-key 'insert global-map (kbd "M-f") 'evil-normal-state)
+(evil-define-key 'insert global-map (kbd "jj") 'evil-normal-state)
 (evil-define-key 'normal tide-mode-map "R" 'tide-references)
 (eval-after-load "flow-minor-mode"
      '(define-key flow-minor-mode-map (kbd "C-S-f") 'flow-minor-status))

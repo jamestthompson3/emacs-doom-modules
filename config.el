@@ -43,9 +43,9 @@
 (setq doom-theme 'doom-city-lights)
 
 ;; ------------- Wakatime Mode -----------------
-(global-wakatime-mode)
-(setq wakatime-api-key (getenv "WAKATIME"))
-(setq wakatime-cli-path "/usr/local/bin/wakatime")
+;; (global-wakatime-mode)
+;; (setq wakatime-api-key (getenv "WAKATIME"))
+;; (setq wakatime-cli-path "/usr/local/bin/wakatime")
 ;; --------- End Wakatime Mode ---------------------
 
 ;; ---------- Silver Searcher ------------------
@@ -54,7 +54,7 @@
 
 ;--------------{Set Font}--------------;
 ;; Font cosmetic edits
-(setq doom-font (font-spec :family "AnonymousPro" :size 16))
+(setq doom-font (font-spec :family "PragmataPro" :size 16))
 (setq doom-big-font (font-spec :family "PragmataPro" :size 24))
 (global-prettify-symbols-mode +1)
 
