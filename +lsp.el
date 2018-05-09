@@ -14,10 +14,10 @@
  (push 'company-lsp company-backends)
  (setq company-lsp-async t
               company-lsp-cache-candidates nil))
-(def-package! lsp-python
-  :after lsp-mode
-  :config
-  (add-hook! python-mode #'lsp-python-enable))
+;; (def-package! lsp-python
+;;   :after lsp-mode
+;;   :config
+;;   (add-hook! python-mode 'lsp-python-enable))
 
 ;; (def-package! lsp-javascript-typescript
 ;;   :after lsp-mode

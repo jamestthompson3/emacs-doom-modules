@@ -73,7 +73,7 @@
 
   )
 ;; Make modeline nice
-(load-theme 'challenger-deep)
+;; (load-theme 'challenger-deep)
 ;; ------------- Random Crap ------------------
 (add-hook! 'before-save-hook 'delete-trailing-whitespace)
 (global-auto-revert-mode t)
