@@ -14,7 +14,7 @@
 ;; (mapc 'load
 ;;       '("org-sync-bb" "org-sync-github" "org-sync-redmine"))
 
-(setq projectile-globally-ignored-directories '("node_modules" ".happypack" "flow-typed" "build"))
+(setq projectile-globally-ignored-directories '("node_modules" ".happypack" "flow-typed" "build" "lib"))
 (setq grep-find-ignored-directories '("node_modules" ".happypack"))
 ;; set indentation
 (setq-default tab-width 2
@@ -40,7 +40,7 @@
         company-tooltip-flip-when-above t
         company-dabbrev-downcase nil))
 
-(setq doom-theme 'doom-city-lights)
+(setq doom-theme 'doom-vibrant)
 
 ;; ------------- Wakatime Mode -----------------
 ;; (global-wakatime-mode)
