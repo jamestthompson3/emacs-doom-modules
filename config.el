@@ -1,10 +1,10 @@
 ;;; private/tt/config.el -*- lexical-binding: t; -*-
 
 ;; ------------- Load Personal Modules --------------
-(load! +bindings)
-(load! +lsp)
-(load! +javascript)
-(load! +ui)
+(load! "+bindings")
+(load! "+lsp")
+(load! "+javascript")
+(load! "+ui")
 ;; ------------ Set Namespace ----------------------
 (require 'wakatime-mode)
 (require 'dumb-jump)
