@@ -2,9 +2,6 @@
 ;; Copy me to ~/.doom.d/init.el or ~/.config/doom/init.el, then edit me!
 
 (doom! :feature
-       (popup            ; tame sudden yet inevitable temporary windows
-        +all             ; catch all popups that start with an asterix
-        +defaults)       ; default popup rules
       ;debugger          ; FIXME stepping through code, to help you add bugs
        eval              ; run code, run (also, repls)
        (evil +everywhere); come to the dark side, we have cookies
@@ -31,6 +28,9 @@
        ;; doom-modeline     ; a snazzy Atom-inspired mode-line
        ;; doom-quit         ; DOOM quit-message prompts when you quit Emacs
        ;; evil-goggles      ; display visual hints when editing in evil
+       (popup            ; tame sudden yet inevitable temporary windows
+        +all             ; catch all popups that start with an asterix
+        +defaults)       ; default popup rules
        hl-todo           ; highlight TODO/FIXME/NOTE tags
        nav-flash         ; blink the current line after jumping
        posframe          ; use child frames where possible (Emacs 26+ only)

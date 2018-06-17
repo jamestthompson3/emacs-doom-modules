@@ -1,18 +1,15 @@
 ;;; private/tt/config.el -*- lexical-binding: t; -*-
+
+;; ------------- Load Personal Modules --------------
 (load! +bindings)
-;; ------------- Code Intel / Language Server Protocol ------------
 (load! +lsp)
-;; --------------------- JavaScript ----------------------------
 (load! +javascript)
+(load! +ui)
 ;; ------------ Set Namespace ----------------------
 (require 'wakatime-mode)
 (require 'dumb-jump)
 (require 'manage-minor-mode)
 (require 'ag)
-(require 'challenger-deep-theme)
-;; -------- Org Sync -------------------
-;; (mapc 'load
-;;       '("org-sync-bb" "org-sync-github" "org-sync-redmine"))
 
 (setq projectile-globally-ignored-directories '("node_modules" ".happypack" "flow-typed" "build" "lib"))
 (setq grep-find-ignored-directories '("node_modules" ".happypack"))
@@ -40,8 +37,6 @@
         company-tooltip-flip-when-above t
         company-dabbrev-downcase nil))
 
-(setq doom-theme 'doom-vibrant)
-
 ;; ------------- Wakatime Mode -----------------
 ;; (global-wakatime-mode)
 ;; (setq wakatime-api-key (getenv "WAKATIME"))
@@ -52,28 +47,6 @@
 (setq ag-highlight-search t)
 (setq ag-reuse-window t)
 
-;--------------{Set Font}--------------;
-;; Font cosmetic edits
-(setq doom-font (font-spec :family "PragmataPro" :size 16))
-(setq doom-big-font (font-spec :family "PragmataPro" :size 24))
-(global-prettify-symbols-mode +1)
-
-;; ; --------- ModeLine ------------------;
-(def-package! spaceline
-  :config (setq spaceline-org-clock-p nil
-                spaceline-evil-p t)
-)
-(def-package! spaceline-all-the-icons
-  :after spaceline
-  :config (spaceline-all-the-icons-theme)
-           (setq spaceline-all-the-icons-icon-set-modified 'circle
-                 spaceline-all-the-icons-icon-set-flycheck-slim 'outline
-                 spaceline-all-the-icons-separator-type 'none)
-
-
-  )
-;; Make modeline nice
-;; (load-theme 'challenger-deep)
 ;; ------------- Random Crap ------------------
 (add-hook! 'before-save-hook 'delete-trailing-whitespace)
 (global-auto-revert-mode t)
